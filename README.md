@@ -1,68 +1,111 @@
-# 🧠 Income Prediction Using Census Data
+# Income Predictation
 
-Welcome to the **Income Prediction ML Project Assignment**!  
-In this project, you will build a machine learning model to predict whether a person earns more than $50K per year using demographic and work-related attributes.
+Predict whether an individual's income exceeds $50K/year based on census data using a machine learning model.
 
----
+🎯 Objective
+This project builds a binary classification model to predict income category (>50K or <=50K) using the Adult Census Income dataset. It includes:
 
-## 🎯 Objective
+Exploratory Data Analysis (EDA)
 
-Your task is to:
+Data preprocessing
 
-- Perform **Exploratory Data Analysis (EDA)** on the "Adult Census Income" dataset.
-- **Preprocess the data** to make it suitable for machine learning.
-- Build and evaluate a **classification model** to predict income (`>50K` or `<=50K`).
-- Deploy the model using both:
-  - A **Flask web application**
-  - A **Streamlit app**
----
+Model training and evaluation
 
-## 📦 Dataset Information
+Deployment with Flask and Streamlit
 
-- **Dataset Name:** Adult Census Income
-- **Source:** [OpenML](https://www.openml.org/d/1590)
-- **Load using:**  
-  ```python
-  from sklearn.datasets import fetch_openml
-  data = fetch_openml("adult", version=2, as_frame=True)
-  ````
+📦 Dataset Information
+Dataset: Adult Census Income
 
-* **Target column:** `income`
-* **Task type:** Binary Classification (`>50K` or `<=50K`)
+Source: OpenML
 
----
+Target: income
 
-## 📝 Assignment Instructions
+Task: Binary Classification
 
-1. **Fork this repository** to your GitHub account.
-2. Perform **EDA** and **data preprocessing** in a Jupyter Notebook.
-3. Build a **classification model**, evaluate its performance (accuracy, precision, recall, etc.).
-4. **Save the trained model** using `pickle` or `joblib`.
-5. Create a **Flask web app** that takes user input and displays the predicted income category.
-6. Create a **Streamlit app** with the same functionality but using Streamlit widgets.
-7. Update the `README.md` with:
+python
+Copy
+Edit
+from sklearn.datasets import fetch_openml
+data = fetch_openml("adult", version=2, as_frame=True)
+🧪 Methodology
+1. Exploratory Data Analysis (EDA)
+Explored distributions of categorical and numerical features
 
-   * Your project overview
-   * Methodology
-   * Live app links (Streamlit if possible)
-   * Screenshots, etc.
-9. Push all your files to your forked GitHub repo and **submit the GitHub repo link**.
+Handled missing values and outliers
 
----
+Visualized key relationships with the target variable
 
-## 📂 Folder Structure
+2. Data Preprocessing
+Label encoding for binary categorical features
 
-```
+One-hot encoding for multi-class categorical features
+
+Normalization of numerical columns
+
+Split data into training and test sets
+
+3. Model Building
+Tried multiple models: Logistic Regression, Random Forest, etc.
+
+Selected the best-performing model based on:
+
+Accuracy
+
+Precision
+
+Recall
+
+F1-score
+
+4. Model Saving
+Serialized the trained model using joblib and saved as model.pkl
+
+🚀 Deployment
+✅ Flask Web App
+flask_app.py creates a form for user input
+
+Predicts income category based on form data
+
+HTML form rendered via Jinja2 (templates/index.html)
+
+![image](https://github.com/user-attachments/assets/21439b39-4ce1-4ffe-a523-1578feb415f0)
+
+
+✅ Streamlit App
+streamlit_app.py offers a user-friendly UI with widgets
+
+Displays prediction and model confidence interactively
+
+![image](https://github.com/user-attachments/assets/ba473d58-0883-4d72-9b27-c62c75a0f594)
+
+
+📂 Folder Structure
+cpp
+
+Copy
+Edit
+
 income-predictor/
-├── flask_app.py                # Flask app entry point
-├── streamlit_app.py            # Streamlit app entry point
+
+├── flask_app.py
+
+├── streamlit_app.py
+
 ├── model/
-│   └── model.pkl               # Trained and serialized model files
+
+│   └── model.pkl
+
 ├── templates/
-│   └── index.html              # HTML template for Flask form
-├── static/                     # (Optional) Static files for Flask
+
+│   └── index.html
+
+├── static/
+
 ├── notebook/
-│   └── eda\_model.ipynb        # notebooks
-├── requirements.txt            # List of Python dependencies
-└── README.md                   # Updated with your project details
-```
+
+
+│   └── eda_model.ipynb
+
+├── requirements.txt
+
+└── README.md
